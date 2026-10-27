@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0c1b15">
+  <title>Robot Engineering | Seeds, Dry Fruits & Spices Monitoring</title>
+  <style>
+:root{
+  --bg:#0a110f; --bg2:#0d1713; --side:#091914; --top:#0d211a;
+  --surface:#14231c; --surface2:#172d23; --surface-hover:#1a3428;
+  --line:#294739; --line-bright:#39664e; --mint:#92e2b0;
+  --green:#6bcf9b; --green-deep:#1d7453; --ink:#ecf8f0;
+  --muted:#a1bbae; --muted2:#80a08e; --warning:#f3bc77;
+  --red:#f3a093; --radius:16px;
+}
+*{box-sizing:border-box}
+html{font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;-webkit-font-smoothing:antialiased;scroll-behavior:smooth;color-scheme:dark}
+body{margin:0;min-height:100vh;color:var(--ink);background:radial-gradient(ellipse 55% 35% at 92% 7%,#122a1e 0%,transparent 65%),linear-gradient(155deg,#090f0e 0%,#0f1915 48%,#0a1210 100%)}
+a{color:inherit}button,select{font:inherit}::selection{background:#59b988;color:#07170f}
+.shell{display:grid;grid-template-columns:244px minmax(0,1fr);min-height:100vh}
+.side{background:linear-gradient(168deg,#0b251b 0%,#0b1d17 75%,#081410 100%);color:var(--ink);border-right:1px solid #2d4c3d;padding:28px 18px;display:flex;flex-direction:column;position:sticky;top:0;height:100vh;min-width:0}
+.logo{display:flex;align-items:center;gap:11px;padding:0 7px 34px}.mark{flex-shrink:0;width:44px;height:44px;display:grid;place-items:center;border-radius:13px;background:linear-gradient(145deg,#226f53,#104533);border:1px solid #3c9b71;box-shadow:inset 0 1px 0 #ffffff20,0 6px 24px #0000001c;color:#edfff0}.mark svg{width:32px;height:32px}
+.brand{font-size:15px;font-weight:780;letter-spacing:-.35px;line-height:1.16;color:#f5fff7}.brand-small{font-size:9px;letter-spacing:1.05px;color:#9ed6b7;margin-top:6px;font-weight:700;text-transform:uppercase;line-height:1.45}
+.side-caption{color:#84ae96;text-transform:uppercase;font-size:10px;font-weight:780;letter-spacing:1.7px;padding:0 15px;margin:5px 0 12px}
+.nav{display:flex;align-items:center;gap:13px;text-decoration:none;border:1px solid transparent;border-radius:11px;padding:13px 14px;color:#bad5c6;font-size:13px;margin-bottom:6px;transition:background .16s,color .16s,border-color .16s}.nav:hover{background:#1b4030;color:#f5fff8;border-color:#36664d}.nav:focus-visible{outline:2px solid var(--mint);outline-offset:2px}.nav.selected{background:linear-gradient(115deg,#22543c,#1b4131);color:#fff;font-weight:710;border-color:#376d51}.nav svg{flex:none;opacity:.95;color:#93dfb3}
+.side-foot{margin-top:auto;padding:19px 9px;border-top:1px solid #31513f;color:#96b8a3;font-size:11px;line-height:1.8}.side-foot strong{color:#e6f8ec;font-weight:700}.side-foot .version{color:#6b9a7b}.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#6bda9a;box-shadow:0 0 0 3px #6bda9a15;margin-right:7px}
+main{min-width:0}.top{min-height:73px;background:linear-gradient(105deg,#0d2019,#10231c);border-bottom:1px solid #2b4c3a;display:flex;align-items:center;justify-content:space-between;gap:15px;padding:15px 34px}.crumb{color:#94b29e;font-size:12px}.crumb b{color:#e1f7e8;font-weight:700}.topright{display:flex;align-items:center;gap:21px;font-size:12px;color:#a1b9ab}.live{display:flex;align-items:center;gap:8px;font-weight:720;color:#88e0ac;white-space:nowrap}.live .dot{margin:0}.live.off{color:#f3aa9c}.live.off .dot{background:#f3a093;box-shadow:0 0 0 3px #f3a0931c}
+.mainbody{max-width:1530px;margin:auto;padding:30px 35px 45px}
+.project-banner{display:flex;align-items:center;justify-content:space-between;gap:23px;position:relative;overflow:hidden;border-radius:19px;padding:25px 30px;background:linear-gradient(105deg,#094031 0%,#0b372d 39%,#10503b 100%);border:1px solid #338567;box-shadow:inset 0 1px 0 #b8ffdc12,0 12px 34px #00000024;margin-bottom:28px;min-height:136px}
+.project-banner:before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 94% 5%,#47b68432,transparent 29%),linear-gradient(115deg,transparent 55%,#ffffff04 55%,transparent 70%);pointer-events:none}
+.project-brand,.project-title{display:flex;align-items:center;position:relative;z-index:1;min-width:0}.project-brand{gap:17px;flex:0 1 47%}.project-title{gap:13px;flex:1 1 48%}
+.banner-mark{display:grid;place-items:center;flex-shrink:0;width:77px;height:77px;border-radius:19px;color:#dcfff0;background:linear-gradient(140deg,#1a9c74,#0d5442);border:1px solid #73d9a466;box-shadow:inset 0 1px 0 #ffffff35,0 8px 20px #061d1638}.banner-mark svg{width:60px;height:60px}
+.project-brand-name{font-size:clamp(19px,2.5vw,30px);font-weight:810;letter-spacing:-.9px;line-height:1.07;white-space:nowrap}.project-brand-sub{font-size:clamp(11px,1.1vw,14px);color:#c1e7d3;margin-top:8px;letter-spacing:.45px}
+.project-divider{height:73px;width:2px;align-self:center;background:linear-gradient(#49d99a,#a9f3c9,#49d99a);opacity:.8;flex-shrink:0;position:relative;z-index:1}
+.project-title svg{width:34px;height:38px;flex-shrink:0;color:#77dfab}.project-title h2{font-size:clamp(16px,1.7vw,22px);font-weight:780;letter-spacing:-.45px;line-height:1.35;margin:0;max-width:540px}
+.circuit{position:absolute;right:-16px;bottom:-4px;width:210px;height:110px;color:#49a982;opacity:.28;z-index:0;pointer-events:none}
+.heading{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:22px;scroll-margin-top:15px}.eyebrow{color:#7cdda5;text-transform:uppercase;letter-spacing:2.1px;font-size:10px;font-weight:800;margin-bottom:10px}.heading h1{font-size:27px;font-weight:780;letter-spacing:-.85px;margin:0 0 6px}.subtitle{font-size:13px;color:#9fb9a9;margin:0;line-height:1.6}.select-wrap{font-size:11px;font-weight:780;letter-spacing:.7px;color:#9ec5ae;display:flex;flex-direction:column;gap:7px}.select-wrap select{background:#1f382b;border:1px solid #3b6b4e;border-radius:9px;padding:10px 30px 10px 12px;min-width:164px;font-weight:700;color:#effcf2;font-size:12px;outline-color:#a2f5b8;cursor:pointer}
+.hero{border-radius:17px;min-height:157px;background:linear-gradient(108deg,#204733 0%,#20533c 60%,#276846 100%);border:1px solid #468763;color:#fff;display:flex;justify-content:space-between;align-items:center;gap:20px;position:relative;overflow:hidden;padding:27px 31px;margin-bottom:26px;box-shadow:0 8px 24px #00000019}
+.hero:before,.hero:after{content:'';position:absolute;border:1px solid #ffffff20;border-radius:50%;width:380px;height:380px;right:-80px;top:-270px}.hero:after{width:225px;height:225px;right:50px;top:-162px}.hero>*{position:relative;z-index:1}.hero-label{font-size:10px;letter-spacing:1.7px;text-transform:uppercase;font-weight:760;color:#b6e8cb;margin-bottom:12px}.hero-status{display:flex;align-items:center;gap:12px}.hero-status h2{font-size:26px;letter-spacing:-.5px;margin:0;font-weight:760}.hero-icon{height:38px;width:38px;border-radius:50%;display:grid;place-items:center;background:#ffffff22;font-size:20px;font-weight:800}.hero-desc{font-size:12px;color:#e1f5e7;margin:11px 0 0;line-height:1.65;max-width:590px}.hero-meta{text-align:right;display:grid;gap:12px;color:#c5e9d2;font-size:10px;letter-spacing:.6px;flex-shrink:0}.hero-meta p{margin:6px 0 0}.hero-meta b{font-size:15px;letter-spacing:0;color:#fff;font-weight:770;font-variant-numeric:tabular-nums}.hero.alert-state{background:linear-gradient(108deg,#483820,#534326,#294c34);border-color:#98774d}.hero.sensor-state{background:linear-gradient(108deg,#4b3b27,#3d3525,#254938);border-color:#8b704d}.hero.offline-state{background:linear-gradient(108deg,#452c2a,#40342e,#2e3f35);border-color:#906354}
+.section-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:27px 0 14px;scroll-margin-top:20px}.section-title{font-size:16px;font-weight:760;letter-spacing:-.2px}.section-sub{color:#8fb09c;font-size:11px}
+.metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.metric{background:linear-gradient(142deg,#1b3328 0%,#172820 74%);border:1px solid var(--line);border-radius:15px;padding:21px 20px 19px;min-height:166px;position:relative;box-shadow:0 5px 22px #00000013, inset 0 1px 0 #c4ffd008;transition:transform .16s,border-color .16s}.metric:hover{transform:translateY(-2px);border-color:#43765a}.m-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:18px}.m-label{font-size:12px;font-weight:660;color:#b9d1c0}.m-icon{height:38px;width:38px;border-radius:11px;display:grid;place-items:center;background:#29533e;border:1px solid #3d7755;color:#a4efba;font-size:21px}.m-value{font-size:32px;letter-spacing:-.8px;font-weight:790;line-height:1.08;font-variant-numeric:tabular-nums;overflow-wrap:anywhere;color:#f8fff9}.m-unit{font-size:13px;font-weight:650;color:#8dd6a6;letter-spacing:0;margin-left:5px}.m-hint{font-size:11px;color:#97b3a1;margin-top:12px;line-height:1.55}.m-warning{font-size:10px;color:#ffda9a;background:#513b25;border:1px solid #87633e;border-radius:7px;padding:5px 8px;display:none;margin-top:11px;width:max-content;max-width:100%}.metric.warn .m-warning{display:block}.metric.warn{border-color:#977348}
+.progress-track{height:7px;border-radius:99px;background:#2b4939;margin-top:15px;overflow:hidden}.progress-fill{height:100%;background:linear-gradient(90deg,#46bd80,#a0edb5);border-radius:99px;width:0;transition:width .4s}
+.lower{display:grid;grid-template-columns:minmax(0,1.63fr) minmax(275px,1fr);gap:17px;margin-top:18px;scroll-margin-top:20px}.panel{background:linear-gradient(144deg,#1a3026,#17261f);border-radius:15px;border:1px solid var(--line);padding:22px;min-width:0;box-shadow:0 5px 22px #00000011}.panel-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:18px}.panel-title{font-size:14px;font-weight:750}.tag{font-size:10px;color:#a4d7b8;background:#294a36;border:1px solid #39674b;padding:6px 9px;border-radius:7px}.charts{display:grid;grid-template-columns:1fr 1fr;gap:16px}.chart-block{min-width:0}.chart-label{display:flex;gap:7px;align-items:center;color:#b1cbbb;font-size:11px;margin-bottom:10px;font-weight:650}.chart-key{width:8px;height:8px;border-radius:3px;background:#6acb93}.chart-key.amber{background:#dbb16f}.chart-unit{margin-left:auto;font-size:10px;color:#93ac9a}.chart-canvas{width:100%;height:128px;display:block}.chart-note{font-size:10px;color:#89aa92;margin-top:8px}.alert-panel{display:flex;flex-direction:column}.alert-item{display:flex;gap:11px;align-items:flex-start;padding:12px;border:1px solid #365747;border-radius:11px;margin-bottom:9px;background:#203b2c}.alert-icon{display:grid;place-items:center;border-radius:9px;background:#326348;flex-shrink:0;width:30px;height:30px;font-size:13px;color:#b6f5c6;font-weight:790}.alert-item.problem{background:#423425;border-color:#806344}.alert-item.problem .alert-icon{background:#73552f;color:#ffe0a0}.alert-item.error{background:#402f2d;border-color:#74514b}.alert-item.error .alert-icon{background:#69433c;color:#ffc1ae}.alert-name{font-size:12px;font-weight:740;line-height:1.4}.alert-detail{color:#a0b8a7;font-size:11px;line-height:1.55;margin-top:3px}.footnote{border-top:1px solid var(--line);padding-top:15px;margin-top:18px;color:#98ad9d;font-size:11px;line-height:1.65}
+.info{margin-top:20px;font-size:11px;color:#acc8b5;background:linear-gradient(105deg,#1b3728,#1a2d24);border:1px solid #3d654a;border-left:3px solid #72d59a;border-radius:12px;padding:15px 17px;line-height:1.8}.info b{color:#bbf4ca}.device{display:flex;align-items:center;gap:4px}.device .dot{margin:0 7px 0 0}.footer{padding:26px 0 4px;display:flex;justify-content:space-between;gap:13px;font-size:11px;color:#85a992}.spinner{display:inline-block;width:8px;height:8px;border-radius:50%;background:#62cf92;box-shadow:0 0 0 4px #62cf9222}
+@media(max-width:1200px){.shell{grid-template-columns:212px 1fr}.side{padding:24px 13px}.mainbody{padding:25px}.top{padding:0 25px}.project-banner{padding:22px}.project-brand-name{white-space:normal}.project-brand{gap:13px}.banner-mark{height:65px;width:65px}.banner-mark svg{width:52px;height:52px}.metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.lower{grid-template-columns:1fr}}
+@media(max-width:780px){.shell{display:block}.side{height:auto;position:relative;flex-direction:row;align-items:center;justify-content:space-between;padding:12px 17px}.logo{padding:0}.side-caption,.nav,.side-foot{display:none}.top{height:53px;min-height:53px;padding:0 18px}.topright .time-label{display:none}.mainbody{padding:20px 17px 33px}.project-banner{padding:20px;gap:15px;flex-wrap:wrap;margin-bottom:23px}.project-brand{flex:1 1 100%}.project-divider{height:1px;width:100%;background:#69d1a080}.project-title{flex:1 1 100%}.project-title h2{font-size:18px}.project-brand-name{font-size:23px}.project-brand-sub{font-size:12px}.circuit{opacity:.15}.heading{flex-direction:column;gap:15px}.heading h1{font-size:24px}.select-wrap{width:100%}.select-wrap select{width:100%}.hero{padding:22px;min-height:147px}.hero-status h2{font-size:21px}.hero-meta{display:none}.metrics{gap:12px}.metric{padding:17px;min-height:156px}.m-top{margin-bottom:15px}.m-label{font-size:11px}.m-value{font-size:27px}.m-icon{width:33px;height:33px}.m-hint{font-size:10px}.lower{gap:12px}.panel{padding:18px}.footer{flex-direction:column}.project-banner:before{opacity:.6}}
+@media(max-width:510px){.metrics{grid-template-columns:1fr}.charts{grid-template-columns:1fr}.project-brand-name{font-size:21px}.project-title h2{font-size:16px}.banner-mark{width:58px;height:58px}.banner-mark svg{width:45px;height:45px}.heading h1{font-size:22px}.m-value{font-size:29px}.top{padding:0 15px}.crumb{font-size:11px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.metric,.progress-fill{transition:none}}
+  </style>
+</head>
+<body>
+<div class="shell">
+  <aside class="side">
+    <div class="logo"><div class="mark"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M10 53h35v5H10zM17 49v-8l12-13 8 7-10 14z" fill="currentColor" fill-opacity=".12"/><path d="M17 41l12-13M34 14l12 12-9 9-12-12z"/><circle cx="28" cy="22" r="6" fill="#126348"/><circle cx="28" cy="22" r="2" fill="currentColor" stroke="none"/><path d="M45 26l7 5-4 9M48 40l-4 4-4-4M48 40l4 4 4-4"/><circle cx="48" cy="28" r="4"/></svg></div><div><div class="brand">Robot Engineering</div><div class="brand-small">Robotic Engineering Project</div></div></div>
+    <div class="side-caption">PROJECT CONSOLE</div>
+    <a class="nav selected" href="#overview"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg>Overview</a>
+    <a class="nav" href="#sensor-readings"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M4 19V5m0 14h17M7 14l4-5 4 3 5-7"/></svg>Live sensor data</a>
+    <a class="nav" href="#diagnostics"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 22a2 2 0 002-2h-4a2 2 0 002 2ZM18 8a6 6 0 00-12 0c0 7-3 8-3 10h18c0-2-3-3-3-10"/></svg>Alerts & diagnostics</a>
+    <div class="side-foot"><div><span class="dot"></span><strong>Pico W local server</strong></div><div>Private measurements · Local network only</div><div>Engineering monitor · v2.0</div></div>
+  </aside>
+  <main>
+    <div class="top"><div class="crumb">Robot Engineering / <b>Storage overview</b></div><div class="topright"><span class="time-label" id="top-time">Waiting for data</span><span class="live off" id="live"><span class="dot"></span><span id="live-text">Connecting</span></span></div></div>
+    <div class="mainbody">
+      <section class="project-banner" aria-label="Robotic Engineering Project: Dry Fruits, Seeds, and Spices Monitoring System">
+        <div class="project-brand"><div class="banner-mark"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M10 53h35v5H10zM17 49v-8l12-13 8 7-10 14z" fill="currentColor" fill-opacity=".12"/><path d="M17 41l12-13M34 14l12 12-9 9-12-12z"/><circle cx="28" cy="22" r="6" fill="#126348"/><circle cx="28" cy="22" r="2" fill="currentColor" stroke="none"/><path d="M45 26l7 5-4 9M48 40l-4 4-4-4M48 40l4 4 4-4"/><circle cx="48" cy="28" r="4"/></svg></div><div><div class="project-brand-name">Robot Engineering</div><div class="project-brand-sub">Robotic Engineering Project</div></div></div>
+        <span class="project-divider" aria-hidden="true"></span>
+        <div class="project-title"><svg viewBox="0 0 36 42" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M17 39V22C10 18 9 11 10 6c8 1 11 7 9 14M18 28c0-12 5-18 15-19-1 11-7 16-15 19"/><path d="M18 26l10-12M17 23l-6-11"/></svg><h2>Dry Fruits, Seeds, and Spices<br>Monitoring System</h2></div>
+        <svg class="circuit" viewBox="0 0 210 110" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M0 94h29l28-26h34l22-24h44l21-23h32M55 110l24-25h35l24-24h40l22-24M97 110l20-19h33l25-26h35"/><circle cx="93" cy="68" r="6" fill="currentColor"/><circle cx="178" cy="21" r="6" fill="currentColor"/><circle cx="150" cy="91" r="6" fill="currentColor"/></svg>
+      </section>
+      <div class="heading" id="overview"><div><div class="eyebrow">LIVE ENVIRONMENTAL MONITORING</div><h1>Storage overview</h1><p class="subtitle">Real-time monitoring for seeds, dried fruits and spices.</p></div><label class="select-wrap">STORED MATERIAL<select id="product"><option value="Seeds">Seeds</option><option value="Dry fruits">Dry fruits</option><option value="Spices">Dried spices</option></select></label></div>
+      <div class="hero"><div><div class="hero-label">OVERALL STORAGE STATUS</div><div class="hero-status"><span class="hero-icon" id="hero-icon">◌</span><h2 id="hero-title">Connecting to sensors</h2></div><p class="hero-desc" id="hero-desc">Contacting the Raspberry Pi Pico W for the latest measurements.</p></div><div class="hero-meta"><div>DEVICE<p><b>Raspberry Pi Pico W</b></p></div><div>LAST UPDATE<p><b id="hero-update">—</b></p></div></div></div>
+      <div class="section-top" id="sensor-readings"><span class="section-title">Live environmental readings</span><span class="section-sub">Live push stream · updates when sensors report</span></div>
+      <section class="metrics" aria-label="Sensor readings">
+        <div class="metric" id="card-air"><div class="m-top"><span class="m-label">Air temperature</span><span class="m-icon">♨</span></div><div class="m-value"><span id="air">—</span><span class="m-unit">°C</span></div><div class="m-hint">Temperature inside the container · DHT22</div><div class="m-warning">Above demonstration limit</div></div>
+        <div class="metric" id="card-humidity"><div class="m-top"><span class="m-label">Air humidity</span><span class="m-icon">◈</span></div><div class="m-value"><span id="humidity">—</span><span class="m-unit">% RH</span></div><div class="m-hint">Relative humidity inside container · DHT22</div><div class="m-warning">Above demonstration limit</div></div>
+        <div class="metric" id="card-product"><div class="m-top"><span class="m-label">Stored material temperature</span><span class="m-icon">🌡</span></div><div class="m-value"><span id="product-temp">—</span><span class="m-unit">°C</span></div><div class="m-hint">Probe within material · DS18B20</div><div class="m-warning">Above demonstration limit</div></div>
+        <div class="metric"><div class="m-top"><span class="m-label">Material moisture response</span><span class="m-icon">◉</span></div><div class="m-value"><span id="moisture">—</span><span class="m-unit" id="moisture-unit">raw</span></div><div class="m-hint" id="moisture-hint">ADC raw: 0–65,535 · not actual product moisture %</div></div>
+        <div class="metric"><div class="m-top"><span class="m-label">Ambient light sensor</span><span class="m-icon">☼</span></div><div class="m-value"><span id="light">—</span><span class="m-unit" id="light-unit">raw</span></div><div class="m-hint" id="light-hint">LDR signal · light response not yet calibrated</div></div>
+        <div class="metric" id="card-stock"><div class="m-top"><span class="m-label">Container fill level</span><span class="m-icon">▣</span></div><div class="m-value"><span id="fill">—</span><span class="m-unit" id="fill-unit">%</span></div><div class="progress-track"><div class="progress-fill" id="fill-bar"></div></div><div class="m-hint" id="fill-hint">Measure empty and full distances to calibrate</div><div class="m-warning">Low stock (demo limit)</div></div>
+      </section>
+      <section class="lower" id="diagnostics">
+        <div class="panel"><div class="panel-head"><span class="panel-title">Environmental trends</span><span class="tag">This browser session</span></div><div class="charts"><div class="chart-block"><div class="chart-label"><span class="chart-key"></span>Air temperature<span class="chart-unit">°C</span></div><canvas id="chart-temp" class="chart-canvas" aria-label="Recent temperature readings"></canvas><div class="chart-note">Last 30 valid samples</div></div><div class="chart-block"><div class="chart-label"><span class="chart-key amber"></span>Relative humidity<span class="chart-unit">% RH</span></div><canvas id="chart-humidity" class="chart-canvas" aria-label="Recent humidity readings"></canvas><div class="chart-note">Charts reset when page reloads</div></div></div><div class="footnote">The graph shows recently received readings from your Pico W. It does not store long-term records.</div></div>
+        <div class="panel alert-panel"><div class="panel-head"><span class="panel-title">Alerts & sensor health</span><span class="tag" id="alert-count">Checking</span></div><div id="alerts"><div class="alert-item"><div class="alert-icon">···</div><div><div class="alert-name">Waiting for sensor data</div><div class="alert-detail">The dashboard will update automatically.</div></div></div></div><div class="footnote">Buzzer warnings use demonstration limits. Choose product-specific safe limits after validation; the selector above changes only the display label.</div></div>
+      </section>
+      <div class="info"><b>Calibration notice:</b> HC-SR04 reports measured surface distance even before fill calibration. The capacitive soil sensor's raw value is not a scientifically valid moisture percentage for seeds, fruits or spices. <span id="distance">Ultrasonic distance: awaiting data.</span></div>
+      <div class="footer"><div class="device"><span class="dot"></span>Robot Engineering · Raspberry Pi Pico W · Local Wi-Fi</div><div id="meta">Waiting for connection</div></div>
+    </div>
+  </main>
+</div>
+<script>
+(function(){
+  'use strict';
+  var $=function(id){return document.getElementById(id)};
+  var historyT=[],historyH=[],lastSample=-1,lastAirSeq=-1,lastGoodAt=0,stream=null;
+  var product=$('product');
+  try {var saved=localStorage.getItem('robot-engineering-storage-product');if(saved&&Array.from(product.options).some(function(o){return o.value===saved})){product.value=saved}}catch(e){}
+  product.addEventListener('change',function(){try{localStorage.setItem('robot-engineering-storage-product',product.value)}catch(e){} });
+  function numeric(v,d){return typeof v==='number'&&isFinite(v)?v.toFixed(d):'—'}
+  function text(id,v){$(id).textContent=v}
+  function alertEntry(title,detail,klass,sign){var item=document.createElement('div');item.className='alert-item'+(klass?' '+klass:'');var icon=document.createElement('div');icon.className='alert-icon';icon.textContent=sign;var body=document.createElement('div');var name=document.createElement('div');name.className='alert-name';name.textContent=title;var sub=document.createElement('div');sub.className='alert-detail';sub.textContent=detail;body.appendChild(name);body.appendChild(sub);item.appendChild(icon);item.appendChild(body);return item}
+  function repaintAlerts(data){var container=$('alerts');container.textContent='';var list=data.alerts||[], errors=data.errors||{},keys=Object.keys(errors);text('alert-count',String(list.length+keys.length)+' notice'+(list.length+keys.length===1?'':'s'));
+    list.forEach(function(a){container.appendChild(alertEntry(a,'A demonstration alert threshold has been reached.','problem','!'))});
+    keys.forEach(function(k){container.appendChild(alertEntry(k+' needs attention',String(errors[k]),'error','×'))});
+    if(!list.length&&!keys.length){container.appendChild(alertEntry('All reporting sensors are normal','No warnings under the current demonstration limits.','','✓'))}
+  }
+  function warnCard(id,flag){$(id).classList.toggle('warn',Boolean(flag))}
+  function update(data){lastGoodAt=Date.now();$('live').classList.remove('off');var hero=document.querySelector('.hero');hero.classList.remove('offline-state','alert-state','sensor-state');text('live-text','Live');text('top-time','Updated just now');text('hero-update','Just now');
+    text('air',numeric(data.air_temp_c,1));text('humidity',numeric(data.humidity_rh,1));text('product-temp',numeric(data.product_temp_c,1));
+    if(data.calibration&&data.calibration.moisture&&typeof data.moisture_index==='number'){text('moisture',numeric(data.moisture_index,1));text('moisture-unit','index');text('moisture-hint','Relative 0–100 index only · NOT true food moisture %')}
+    else{text('moisture',numeric(data.moisture_raw,0));text('moisture-unit','raw');text('moisture-hint','ADC raw: 0–65,535 · not actual product moisture %')}
+    if(data.light_mode==='digital'){text('light',numeric(data.light_raw,0));text('light-unit','DO');text('light-hint','Digital comparator output · threshold set on LDR module')}
+    else if(data.calibration&&data.calibration.light&&typeof data.light_index==='number'){text('light',numeric(data.light_index,1));text('light-unit','index');text('light-hint','Relative light index, 0–100 · not lux')}
+    else{text('light',numeric(data.light_raw,0));text('light-unit','raw');text('light-hint','LDR ADC: 0–65,535 · light response not calibrated')}
+    if(typeof data.fill_pct==='number'&&isFinite(data.fill_pct)){text('fill',numeric(data.fill_pct,1));text('fill-unit','%');$('fill-bar').style.width=Math.max(0,Math.min(100,data.fill_pct))+'%';text('fill-hint','Approximate fill by depth · HC-SR04')}
+    else{text('fill','—');text('fill-unit','%');$('fill-bar').style.width='0%';text('fill-hint','Not calibrated · measured surface distance available below')}
+    text('distance','HC-SR04 surface distance: '+(typeof data.distance_cm==='number'?data.distance_cm.toFixed(1)+' cm':'unavailable')+'.');
+    warnCard('card-air',typeof data.air_temp_c==='number'&&data.air_temp_c>=35);warnCard('card-humidity',typeof data.humidity_rh==='number'&&data.humidity_rh>=70);warnCard('card-product',typeof data.product_temp_c==='number'&&data.product_temp_c>=35);warnCard('card-stock',typeof data.fill_pct==='number'&&data.fill_pct<=15);
+    if(data.status==='alert'){hero.classList.add('alert-state');text('hero-title','Conditions need attention');text('hero-icon','!');text('hero-desc','A measured value has exceeded one or more demonstration warning thresholds. Review the alerts below.')}
+    else if(data.status==='sensor_error'){hero.classList.add('sensor-state');text('hero-title','Check sensor connections');text('hero-icon','!');text('hero-desc','Some sensors are not responding. Available readings are shown below; check the diagnostics panel.')}
+    else if(data.status==='normal'){text('hero-title','Monitoring normally');text('hero-icon','✓');text('hero-desc','All reporting sensors are within the configured demonstration limits. Live measurements are updating.')}
+    else{text('hero-title','Starting monitor');text('hero-icon','◌');text('hero-desc','Collecting first measurements.')}
+    repaintAlerts(data);text('meta','Update #'+data.sample_number+' · Pico uptime '+Math.floor((data.uptime_s||0)/60)+' min');
+    if(data.sample_number<lastSample){historyT=[];historyH=[];lastAirSeq=-1;}lastSample=data.sample_number;
+    // Air updates only every ~2.4s even though moisture/light stream faster.
+    // Graph only new DHT22 readings (not repeated snapshots of old values).
+    if(typeof data.air_seq==='number'&&data.air_seq!==lastAirSeq){lastAirSeq=data.air_seq;
+      if(typeof data.air_temp_c==='number'){historyT.push(data.air_temp_c);if(historyT.length>30)historyT.shift()}
+      if(typeof data.humidity_rh==='number'){historyH.push(data.humidity_rh);if(historyH.length>30)historyH.shift()}
+      drawAll();
+    }
+  }
+  function offline(){if(lastGoodAt&&Date.now()-lastGoodAt<8000)return;document.querySelector('.hero').classList.add('offline-state');$('live').classList.add('off');text('live-text','Disconnected');text('top-time','Unable to reach Pico W');text('hero-title','Connection unavailable');text('hero-desc','Check Pico W power, Wi-Fi and that your device is on the same local network.');text('hero-icon','!')}
+  function chart(id,values,color){var c=$(id),cssWidth=c.getBoundingClientRect().width||250,cssHeight=126,dpr=Math.min(window.devicePixelRatio||1,2);c.width=Math.round(cssWidth*dpr);c.height=Math.round(cssHeight*dpr);var g=c.getContext('2d');g.scale(dpr,dpr);var w=cssWidth,h=cssHeight;g.clearRect(0,0,w,h);
+    g.strokeStyle='#34513f';g.lineWidth=1;for(var j=1;j<4;j++){var y=10+j*(h-30)/4;g.beginPath();g.moveTo(0,y);g.lineTo(w,y);g.stroke()}
+    if(!values.length){g.fillStyle='#9ab8a5';g.font='11px Segoe UI, sans-serif';g.fillText('Waiting for readings...',10,h/2);return}
+    var min=Math.min.apply(null,values),max=Math.max.apply(null,values),spread=Math.max(max-min,2),pad=spread*.2;min-=pad;max+=pad;var pts=[];values.forEach(function(v,i){var x=10+i*(w-20)/Math.max(29,values.length-1),y=10+(max-v)*(h-27)/(max-min);pts.push([x,y])});
+    if(pts.length===1){pts.push([w-10,pts[0][1]])}
+    var fill=g.createLinearGradient(0,0,0,h);fill.addColorStop(0,color==='green'?'rgba(111,226,158,.24)':'rgba(231,182,100,.20)');fill.addColorStop(1,'rgba(21,40,30,0)');
+    g.beginPath();g.moveTo(pts[0][0],h-13);pts.forEach(function(p){g.lineTo(p[0],p[1])});g.lineTo(pts[pts.length-1][0],h-13);g.closePath();g.fillStyle=fill;g.fill();
+    g.beginPath();pts.forEach(function(p,i){if(i===0)g.moveTo(p[0],p[1]);else g.lineTo(p[0],p[1])});g.strokeStyle=color==='green'?'#7cdda3':'#e4b670';g.lineWidth=2.5;g.lineCap='round';g.lineJoin='round';g.stroke();var last=pts[pts.length-1];g.beginPath();g.arc(last[0],last[1],4,0,Math.PI*2);g.fillStyle=color==='green'?'#7cdda3':'#e4b670';g.fill();
+  }
+  function drawAll(){chart('chart-temp',historyT,'green');chart('chart-humidity',historyH,'amber')}
+  function validData(data){return data&&typeof data==='object'&&
+    typeof data.sample_number==='number'&&Array.isArray(data.alerts)&&
+    data.errors&&typeof data.errors==='object'}
+  function openLiveStream(){
+    // Server-Sent Events (SSE): the Pico PUSHES updates when readings arrive.
+    // EventSource handles automatic reconnect after Wi-Fi interruptions.
+    if(typeof EventSource==='undefined'){
+      offline();text('hero-desc','This browser does not support live EventSource streaming. Use a recent Chrome, Firefox, Edge, or Safari.');
+      return;
+    }
+    stream=new EventSource('/api/stream');
+    stream.onopen=function(){
+      if(!lastGoodAt){text('live-text','Streaming');text('top-time','Waiting for first reading')}
+    };
+    stream.onmessage=function(e){
+      try{
+        var data=JSON.parse(e.data);
+        if(!validData(data))throw new Error('Invalid sensor JSON');
+        update(data);
+      }catch(err){console.error('Live sensor message rejected:',err)}
+    };
+    stream.onerror=function(){
+      $('live').classList.add('off');
+      text('live-text','Reconnecting');
+      text('top-time','Stream interrupted');
+      if(!lastGoodAt||Date.now()-lastGoodAt>8000)offline();
+    };
+  }
+  window.addEventListener('resize',drawAll);
+  window.addEventListener('beforeunload',function(){if(stream)stream.close()});
+  drawAll();openLiveStream();
+  // This timer updates only the "last seen" label; it does NOT fetch data.
+  setInterval(function(){
+    if(lastGoodAt){
+      var seconds=Math.floor((Date.now()-lastGoodAt)/1000);
+      text('hero-update',seconds<2?'Just now':seconds+' sec ago');
+      if(seconds>8)offline();
+    }
+  },1000);
+})();
+</script>
+</body>
+</html>
